@@ -11,7 +11,7 @@ import {
 import Header from "../Header";
 import ProductTable from "../ProductTable";
 import HistorySidebar from "../HistorySidebar";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/index";
 import AddProductModal from "../AddProductModal";
 import DeleteModal from "../DeleteProductModal";
 
