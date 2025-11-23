@@ -35,3 +35,7 @@ export const addProduct = async (data) => {
 };
 
 
+export const deleteProduct = async (id) => {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    return response.data;
+};
