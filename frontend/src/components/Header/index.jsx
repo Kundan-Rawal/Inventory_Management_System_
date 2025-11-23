@@ -12,7 +12,7 @@ const Header = ({
   return (
     <header className="header">
       <h1>Inventory Management</h1>
-      
+
       <div className="controls">
         <input
           type="text"
@@ -49,7 +49,7 @@ const Header = ({
           </label>
 
           <a
-            href="http://localhost:3000/api/products/export"
+            href="https://inventory-management-system-oh0r.onrender.com/api/products/export"
             target="_blank"
             className="btn-export"
             rel="noreferrer"
