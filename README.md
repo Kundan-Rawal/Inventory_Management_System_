@@ -156,8 +156,8 @@ npm run dev
 - GET /api/products/:id/history -> Get change logs for a specific product.
 
 ### Auth
-- POST /api/auth/register       -> Register a new user.
-- POST /api/auth/login          -> Login and receive JWT.
+- POST /api/users/register       -> Register a new user.
+- POST /api/users/login          -> Login and receive JWT.
 
 ---
 
