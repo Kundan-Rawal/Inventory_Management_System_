@@ -1,0 +1,291 @@
+.mainpadding{
+    padding-top: 50px;
+}
+body {
+  /* This is the new, clean font */
+  font-family: 'Inter', sans-serif; 
+  
+  /* Keep the rest */
+  background: var(--bg);
+  margin: 0;
+  color: #334155;
+  -webkit-font-smoothing: antialiased; /* Makes text look sharper on Mac */
+  
+}
+:root {
+  --primary: #F37021;
+  --bg: #f2f8ff;
+  --border: #e2e8f0;
+  --text: #404c5f;
+  --header-bg: #ffffff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  margin-top: 50px; /* Allows scrolling inside the main area */
+}
+
+/* --- Header Component --- */
+.header {
+  margin-bottom: 2rem;
+}
+.header h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  background: var(--header-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  align-items: center;
+  flex-wrap: wrap; /* responsive */
+}
+
+.search-input, .category-select {
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+.search-input:focus, .category-select:focus {
+  border-color: var(--primary);
+}
+
+.file-actions {
+  margin-left: auto; /* Pushes buttons to the right */
+  display: flex;
+  gap: 10px;
+}
+
+.btn-import, .btn-export {
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  border: none;
+}
+.btn-export { background: #475569; }
+.btn-import:hover { background: #1d4ed8; }
+.btn-export:hover { background: #334155; }
+
+/* --- ProductTable Component (Optimized for High Density) --- */
+.table-wrapper {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  
+  /* CRITICAL FIX: Enables horizontal scroll if screen is too small */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* Forces the table to keep its shape, triggers scroll if needed */
+}
+
+thead {
+  background: #f1f5f9;
+  border-bottom: 2px solid var(--border);
+}
+
+th {
+  text-align: left;
+  padding: 0.85rem 1rem; /* Slightly reduced vertical padding */
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap; /* Prevents headers from breaking into two lines */
+  position: sticky; /* Optional: Keeps header visible while scrolling */
+  top: 0;
+}
+
+td {
+  padding: 0.75rem 1rem; /* Compact padding */
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Prevents text wrapping (cleaner look) */
+}
+
+/* Specific Column Tweaks */
+td:nth-child(2) { /* Name Column */
+  font-weight: 500;
+  color: #1e293b;
+  min-width: 150px; /* Give the name some breathing room */
+  white-space: normal; /* Allow Name to wrap if it's really long */
+}
+
+tr:hover {
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+/* Selected row highlight */
+.selected-row {
+  background: #e0f2fe !important; 
+  border-left: 4px solid var(--primary);
+}
+
+.prod-img {
+  width: 36px; /* Slightly smaller image */
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #eee;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 0.2rem 0.6rem; /* Compact badge */
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.instock { background: #dcfce7; color: #166534; }
+.outstock { background: #fee2e2; color: #991b1b; }
+
+/* Inline Edit Inputs - Fixes layout shift during edit */
+td input, td select {
+  width: 100%;
+  min-width: 60px; /* Prevents inputs from disappearing */
+  padding: 0.4rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #f8fafc;
+}
+
+/* Make action buttons sit side-by-side nicely */
+td:last-child {
+  white-space: nowrap;
+}
+
+.btn-edit, .btn-save, .btn-cancel, .btn-delete {
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-right: 6px;
+}
+
+/* ... keep the rest of your HistorySidebar CSS ... */
+
+/* --- HistorySidebar Component --- */
+.sidebar {
+  width: 320px;
+  background: white;
+  border-left: 1px solid var(--border);
+  position: fixed;
+  right: -350px; /* Fully hidden */
+  top: 0;
+  bottom: 0;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -4px 0 15px rgba(0,0,0,0.05);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  margin-top:50px;
+}
+.sidebar-header h3 { margin: 0; font-size: 1.1rem; }
+.sidebar-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.sidebar-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.sidebar-content h4 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.history-list li {
+  background: #f8fafc;
+  margin-bottom: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.history-list small {
+  display: block;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.arrow {
+  color: #cbd5e1;
+  margin: 0 0.5rem;
+}
+
+.changed-by {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-style: italic;
+}
