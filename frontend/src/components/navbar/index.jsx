@@ -1,4 +1,5 @@
 import "./index.css";
+import React from "react";
 
 const Navbar = () => {
   return (
@@ -9,6 +10,7 @@ const Navbar = () => {
           className="logo"
         />
       </div>
+      
     </div>
   );
 };
