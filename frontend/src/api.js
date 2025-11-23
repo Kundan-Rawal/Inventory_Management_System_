@@ -1,7 +1,7 @@
 // src/api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/products';
+const API_URL = 'https://inventory-management-system-oh0r.onrender.com/api/products';
 
 export const fetchProducts = async (search = '') => {
     const url = search ? `${API_URL}?name=${search}` : API_URL;
@@ -35,7 +35,3 @@ export const addProduct = async (data) => {
 };
 
 
-export const deleteProduct = async (id) => {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
-};
