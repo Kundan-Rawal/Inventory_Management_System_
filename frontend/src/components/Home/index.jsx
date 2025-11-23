@@ -11,7 +11,7 @@ import {
 import Header from "../Header";
 import ProductTable from "../ProductTable";
 import HistorySidebar from "../HistorySidebar";
-import Navbar from "../Navbar/index";
+import Navbar from "../navbar/index";
 import AddProductModal from "../AddProductModal";
 import DeleteModal from "../DeleteProductModal";
 
@@ -141,7 +141,6 @@ const Dashboard = () => {
       toast.error("Failed to delete product");
     }
   };
-
 
   const filteredByCategory = products.filter((p) =>
     categoryFilter ? p.category === categoryFilter : true
