@@ -142,19 +142,6 @@ const Dashboard = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    // Simple confirmation dialog
-    if (window.confirm("Are you sure you want to delete this product?")) {
-      try {
-        await deleteProduct(id);
-        toast.success("Product Deleted");
-        loadProducts(); // Refresh list
-        if (selectedProduct?.id === id) setSelectedProduct(null); // Close sidebar if open
-      } catch (err) {
-        toast.error("Failed to delete");
-      }
-    }
-  };
 
   const filteredByCategory = products.filter((p) =>
     categoryFilter ? p.category === categoryFilter : true
