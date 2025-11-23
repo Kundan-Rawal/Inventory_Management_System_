@@ -13,6 +13,7 @@ import ProductTable from "../ProductTable";
 import HistorySidebar from "../HistorySidebar";
 import Navbar from "../navbar/index";
 import AddProductModal from "../AddProductModal";
+import { useNavigate } from "react-router-dom";
 import DeleteModal from "../DeleteProductModal";
 
 const Dashboard = () => {
@@ -31,7 +32,7 @@ const Dashboard = () => {
   });
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
-
+  const navigate = useNavigate();
   // Load Data
   useEffect(() => {
     loadProducts();
@@ -105,7 +106,8 @@ const Dashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
-    window.location.href = "/login";
+    toast.info("Logged out successfully");
+    navigate("/login");
   };
 
   const handleAddProduct = async (newProductData) => {
