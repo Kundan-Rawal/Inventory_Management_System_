@@ -17,7 +17,7 @@ const Login = ({ onLogin }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/users${endpoint}`,
+        `https://inventory-management-system-oh0r.onrender.com/api/users${endpoint}`,
         {
           username,
           password,
